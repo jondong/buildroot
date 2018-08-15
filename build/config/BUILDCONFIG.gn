@@ -3,7 +3,7 @@
 # found in the LICENSE file.
 
 # Set the root of the engine project.
-flutter_root = "//flutter"
+mutual_binding_root = "//mutual-binding"
 
 # =============================================================================
 # PLATFORM SELECTION
