@@ -161,6 +161,8 @@ declare_args() {
   # DON'T ADD MORE FLAGS HERE. Read the comment above.
 }
 
+default_compiler_configs = []
+
 # =============================================================================
 # OS DEFINITIONS
 # =============================================================================
