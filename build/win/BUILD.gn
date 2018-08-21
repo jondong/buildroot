@@ -1,0 +1,5 @@
+group("windows_manifest") {
+}
+
+group("default_exe_manifest") {
+}
