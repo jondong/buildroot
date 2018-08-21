@@ -891,3 +891,16 @@ config("no_symbols") {
     cflags = [ "-g0" ]
   }
 }
+
+config("default_optimization") {
+  if (is_debug) {
+    configs = [ ":no_optimize" ]
+  } else {
+    configs = [ ":optimize" ]
+  }
+}
+
+config("optimize_speed") {
+  ldflags = common_optimize_on_ldflags
+  cflags = [ "-O3" ] + common_optimize_on_cflags
+}

@@ -17,3 +17,6 @@ config("extra_warnings") {
 
   defines = [ "_LIBCPP_ENABLE_THREAD_SAFETY_ANNOTATIONS" ]
 }
+
+config("find_bad_constructs") {
+}

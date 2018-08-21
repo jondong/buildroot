@@ -113,6 +113,9 @@ if (current_os == "") {
 # - Don't call exec_script inside declare_args. This will execute the script
 #   even if the value is overridden, which is wasteful. See first bullet.
 
+is_aix = false
+is_ubsan_vptr = false
+
 declare_args() {
   # How many symbols to include in the build. This affects the performance of
   # the build since the symbols are large and dealing with them is slow.
@@ -415,6 +418,7 @@ _native_compiler_configs = [
   "//build/config/compiler:default_include_dirs",
   "//build/config/compiler:no_rtti",
   "//build/config/compiler:runtime_library",
+  "//build/config/compiler:default_optimization",
 ]
 if (is_win) {
   _native_compiler_configs += [
@@ -445,7 +449,10 @@ if (is_fnl) {
 }
 
 if (is_clang) {
-  _native_compiler_configs += [ "//build/config/clang:extra_warnings" ]
+  _native_compiler_configs += [
+    "//build/config/clang:extra_warnings",
+    "//build/config/clang:find_bad_constructs",
+  ]
 }
 
 # Optimizations and debug checking.
@@ -562,6 +569,8 @@ set_defaults("test") {
     configs = _executable_configs
   }
 }
+
+default_compiler_configs = _native_compiler_configs
 
 # ==============================================================================
 # TOOLCHAIN SETUP
