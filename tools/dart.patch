@@ -1,0 +1,15 @@
+diff --git a/BUILD.gn b/BUILD.gn
+index 5dbba45bff..3251fde6ef 100644
+--- a/BUILD.gn
++++ b/BUILD.gn
+@@ -48,8 +48,8 @@ group("runtime") {
+     "runtime/bin:dart_bootstrap($host_toolchain)",
+     "runtime/bin:process_test",
+     "runtime/bin:run_vm_tests",
+-    "runtime/bin:sample_extension",
+-    "runtime/bin:test_extension",
++    #"runtime/bin:sample_extension",
++    #"runtime/bin:test_extension",
+     "runtime/vm:kernel_platform_files($host_toolchain)",
+ 
+     # TODO(rmacnak): Link this into 'dart'.

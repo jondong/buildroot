@@ -1,0 +1,54 @@
+diff --git a/BUILD.gn b/BUILD.gn
+index 311b700101..a7f3eea884 100644
+--- a/BUILD.gn
++++ b/BUILD.gn
+@@ -135,13 +135,13 @@ declare_args() {
+   # if files export symbols used by later files, they should go first.
+   #
+   # This default is used by cctests. Projects using V8 will want to override.
+-  v8_extra_library_files = [ "//test/cctest/test-extra.js" ]
++  v8_extra_library_files = [ "//v8/test/cctest/test-extra.js" ]
+ 
+   # Like v8_extra_library_files but for experimental features.
+   #
+   # This default is used by cctests. Projects using V8 will want to override.
+   v8_experimental_extra_library_files =
+-      [ "//test/cctest/test-experimental-extra.js" ]
++      [ "//v8/test/cctest/test-experimental-extra.js" ]
+ 
+   v8_enable_gdbjit =
+       ((v8_current_cpu == "x86" || v8_current_cpu == "x64") &&
+@@ -3276,7 +3276,7 @@ group("gn_all") {
+     ":v8_fuzzers",
+     ":v8_hello_world",
+     ":v8_sample_process",
+-    "test:gn_all",
++    #"test:gn_all",
+     "tools:gn_all",
+   ]
+ 
+diff --git a/src/inspector/v8-runtime-agent-impl.cc b/src/inspector/v8-runtime-agent-impl.cc
+index d0ae633945..c80034b4d3 100644
+--- a/src/inspector/v8-runtime-agent-impl.cc
++++ b/src/inspector/v8-runtime-agent-impl.cc
+@@ -31,6 +31,7 @@
+ #include "src/inspector/v8-runtime-agent-impl.h"
+ 
+ #include <inttypes.h>
++#include <cstdio>
+ 
+ #include "src/debug/debug-interface.h"
+ #include "src/inspector/injected-script.h"
+diff --git a/tools/BUILD.gn b/tools/BUILD.gn
+index 05c382e2f6..33f3a47683 100644
+--- a/tools/BUILD.gn
++++ b/tools/BUILD.gn
+@@ -30,7 +30,7 @@ group("v8_android_test_runner_deps") {
+ 
+   if (is_android && !build_with_chromium) {
+     data_deps = [
+-      "../build/android:test_runner_py",
++      "../../build/android:test_runner_py",
+     ]
+     data = [
+       # This is used by android.py, but not included by test_runner_py above.
